@@ -1,0 +1,26 @@
+#!/bin/bash
+clear
+
+read -p "Enter the Co-efficient of x^2 " a
+read -p "Enter the Co-efficient of x " b
+read -p "Enter the constant " c
+
+sq=`echo "scale=4;$b^2" | bc`
+echo $sq
+
+det=`echo "scale=4;$sq-(4*$a*$c)" | bc`
+echo $det
+
+sqdet=`echo "scale=4;sqrt($det)" | bc`
+echo $sqdet
+
+num1=`echo "scale=4;($sqdet - $b)" | bc`
+echo $num1
+
+num2=`echo "scale=4;(-$sqdet - $b)" | bc`
+echo $num2
+
+res1=`echo "scale=4;$num1/(2*$a)" | bc`
+res2=`echo "scale=4;$num2/(2*$a)" | bc`
+
+echo "Results are: " $res1 "and " $res2
