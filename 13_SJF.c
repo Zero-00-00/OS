@@ -50,12 +50,18 @@ int main() {
     qsort(A, 0, n - 1);  // Sort based on burst time
 
     int TAT = 0;  // Turnaround time
+    float avg_TAT=0, avg_WT=0;
     printf("Process     Burst time      TAT      WT\n");
     for (int j = 0; j < n; j++) {
         TAT += A[j][0];  // Add burst time to Turnaround time
+        avg_TAT+=TAT;
         int WT = TAT - A[j][0];  // Waiting time = TAT - Burst time
+        avg_WT+=WT;
         printf("P%d             %d            %d      %d\n", A[j][1], A[j][0], TAT, WT);
     }
+
+    printf("The average Waiting time: %f\n", avg_WT/n);
+    printf("The average Turn Around time: %f\n", avg_TAT/n);
 
     return 0;
 }

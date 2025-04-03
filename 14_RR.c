@@ -39,11 +39,18 @@ int main() {
 
     RR(A, n, q);
 
+    float avg_TAT=0, avg_WT=0;
+
     printf("Process     Burst time      TAT      WT\n");
     for (int j = 0; j < n; j++) {
         int WT = A[j][2] - A[j][0];  // Waiting time = Turnaround Time - Burst Time
+        avg_TAT+=A[j][2];
+        avg_WT+=WT;
         printf("P%d             %d            %d      %d\n", j + 1, A[j][0], A[j][2], WT);
     }
 
+    printf("The average Waiting time: %f\n", avg_WT/n);
+    printf("The average Turn Around time: %f\n", avg_TAT/n);
+    
     return 0;
 }

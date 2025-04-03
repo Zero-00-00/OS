@@ -14,9 +14,17 @@ int main() {
     }
 
     int TAT=0;
-    printf("Process     Burst time      TAT      WT\n");
+    float avg_TAT=0, avg_WT=0;
+    printf("Process     Burst time      WT      TAT\n");
     for (int j=0; j<n; j++) {
         TAT+=arr[j];
-        printf("P%d             %d            %d      %d\n", j+1, arr[j], TAT, TAT-arr[j]);
+        avg_TAT+=TAT;
+        avg_WT+=TAT-arr[j];
+        printf("P%d             %d            %d      %d\n", j+1, arr[j], TAT-arr[j], TAT);
     }
+
+    printf("The average Waiting time: %f\n", avg_WT/n);
+    printf("The average Turn Around time: %f\n", avg_TAT/n);
+
+    return 0;
 }
